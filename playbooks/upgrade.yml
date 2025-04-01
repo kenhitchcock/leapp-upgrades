@@ -1,0 +1,14 @@
+---
+- name: Upgrade
+  hosts: all
+  strategy: free
+  become: true
+  force_handlers: true
+  vars:
+    leapp_upgrade_opts: --target 8.10
+    update_grub_to_grub_2: true
+    selinux_mode: permissive
+  tasks:
+    - name: Perform OS upgrade
+      ansible.builtin.import_role:
+        name: infra.leapp.upgrade

@@ -1,0 +1,17 @@
+---
+- name: Analysis
+  hosts: all
+  strategy: free
+  gather_facts: true
+  become: true
+  force_handlers: true
+
+  vars:
+    leapp_preupg_opts: --target 8.10
+    leapp_answerfile: |
+      [remove_pam_pkcs11_module_check]
+      confirm = True
+  tasks:
+    - name: Generate preupgrade analysis report
+      ansible.builtin.import_role:
+        name: infra.leapp.analysis
