@@ -1,0 +1,16 @@
+---
+- name: leapp_required_yum_plugins | Fix potential issues with required yum plugins
+  when: ansible_distribution == 'RedHat' and ansible_distribution_major_version|int == 7
+  block:
+    - name: leapp_required_yum_plugins | Configure yum plugins to be enabled where no spaces.
+      ansible.builtin.lineinfile:
+        path: "/etc/yum/pluginconf.d/{{ item }}"
+        regex: '^enabled(.+)'
+        line: 'enabled=1'
+      loop:
+        - langpacks.conf
+        - product-id.conf
+        - rhnplugin.conf
+        - search-disabled-repos.conf
+        - subscription-manager.conf
+

@@ -1,0 +1,15 @@
+---
+- name: "Remediation tasks"
+  hosts: all
+  strategy: free
+  become: true
+  force_handlers: true
+  vars:
+    remediation_todo:
+      - leapp_required_yum_plugins
+
+  tasks:
+    - name: Perform remediations on the system
+      ansible.builtin.import_role:
+        name: ../roles/ansible-role-leapp-remediate
+
