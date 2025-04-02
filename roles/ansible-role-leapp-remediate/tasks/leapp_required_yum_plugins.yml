@@ -10,7 +10,8 @@
       loop:
         - langpacks.conf
         - product-id.conf
-        - rhnplugin.conf
         - search-disabled-repos.conf
         - subscription-manager.conf
 
+# Currently this file needs to be left enabled = 0, otherwise you could/will experience issues with Satellite server registration.          
+#        - rhnplugin.conf
