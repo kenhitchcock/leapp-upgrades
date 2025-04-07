@@ -1,2 +1,6 @@
-[rhel7]
+[rhel8]
 aig-rhel701.kenlab.local
+
+
+[rhel7]
+aig-rhel601.kenlab.local

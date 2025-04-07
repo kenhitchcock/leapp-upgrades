@@ -1,13 +1,12 @@
 ---
 - name: Upgrade
-  hosts: all
+  hosts: rhel6 
   strategy: free
   become: true
   force_handlers: true
   vars:
-    leapp_upgrade_opts: --target 8.10
-    update_grub_to_grub_2: true
-    selinux_mode: permissive
+    rhel_7_network_install_repo_url: http://rhel8-sat01.kenlab.local/pub/RHEL7.9/
+      
   tasks:
     - name: Perform OS upgrade
       ansible.builtin.import_role:
